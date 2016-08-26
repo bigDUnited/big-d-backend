@@ -7,16 +7,10 @@
  * Author:  berger
  * Created: Aug 26, 2016
  */
-CREATE TABLE PERSON
-  (     PERSONID INT PRIMARY KEY, 
-  	FIRSTNAME VARCHAR(30),
-        LASTNAME VARCHAR(30),
-        BIRTHDATE DATE
-  );
 
-Insert into VOICE (VOICEID,NAME) values (1,'Bass');
-Insert into VOICE (VOICEID,NAME) values (2,'Tenor');
-Insert into VOICE (VOICEID,NAME) values (3,'Sopran');
+Insert into VOICE (VOICEID,VOICENAME) values (1,'Bass');
+Insert into VOICE (VOICEID,VOICENAME) values (2,'Tenor');
+Insert into VOICE (VOICEID,VOICENAME) values (3,'Sopran');
 
 Insert into PERSON (PERSONID,FIRSTNAME,LASTNAME,BIRTHDATE) values (1,'Doe','John',date('1998-03-25'));
 Insert into PERSON (PERSONID,FIRSTNAME,LASTNAME,BIRTHDATE) values (2,'Mustermann','Max',date('1981-01-12'));
