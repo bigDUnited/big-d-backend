@@ -7,6 +7,9 @@
  * Author:  berger
  * Created: Aug 26, 2016
  */
+DELETE * FROM VOICE
+DELETE * FROM PERSON
+DELETE * FROM MEMBER
 
 Insert into VOICE (VOICEID,VOICENAME) values (1,'Bass');
 Insert into VOICE (VOICEID,VOICENAME) values (2,'Tenor');
