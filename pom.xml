@@ -18,6 +18,7 @@
   		</plugin>
   	</plugins>
   </build>
+<<<<<<< HEAD
     <repositories>
         <repository>
             <id>unknown-jars-temp-repo</id>
@@ -26,11 +27,15 @@
         </repository>
     </repositories>
     <dependencies>
+=======
+  <dependencies>
+>>>>>>> 76e9c47c10451843403c56fb23fe7bb621cd7186
   	<dependency>
   		<groupId>mysql</groupId>
   		<artifactId>mysql-connector-java</artifactId>
   		<version>5.1.18</version>
   	</dependency>
+<<<<<<< HEAD
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
@@ -43,6 +48,9 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+=======
+  </dependencies>
+>>>>>>> 76e9c47c10451843403c56fb23fe7bb621cd7186
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
