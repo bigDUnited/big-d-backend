@@ -15,9 +15,14 @@ import javax.persistence.EntityManagerFactory;
 public class EntityMigrator {
 
     public static void main(String[] args) {
-        Location loc = new Location();
+        Location firstLoc = new Location("My first Location");
+        Location secondLoc = new Location("My second Location");
         EntityMigrator em = new EntityMigrator();
-        em.persist(loc);
+        em.persist(firstLoc);
+        em.persist(secondLoc);
+        
+        Journey firstJourney = new Journey(firstLoc,secondLoc);
+        em.persist(firstJourney);
         System.exit(0);
     }
 

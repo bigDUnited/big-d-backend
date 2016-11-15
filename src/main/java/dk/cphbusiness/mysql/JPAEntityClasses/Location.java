@@ -6,28 +6,50 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author redrose
  */
 @Entity
+@Table(name="Locations")
 public class Location implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long locationId;
+    private Integer locationId;
+    
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name="locationName")
+    private String locationName;
 
-    public Long getId() {
+    public Location(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public Integer getId() {
         return locationId;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.locationId = id;
     }
 
