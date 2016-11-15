@@ -1,4 +1,4 @@
-package com.dimitrisli.mysql;
+package dk.cphbusiness.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,11 +30,11 @@ public class MySQLJava {
 			Class.forName(jdbcDriverStr);
 			connection = DriverManager.getConnection(jdbcURL);
 			statement = connection.createStatement();
-			resultSet = statement.executeQuery("select * from javaTestDB.test_table;");
+			resultSet = statement.executeQuery("select * from TEST_TABLE;");
 			getResultSet(resultSet);
-			preparedStatement = connection.prepareStatement("insert into javaTestDB.test_table values (default,?)");
-			preparedStatement.setString(1,"insert test from java");
-			preparedStatement.executeUpdate();
+//			preparedStatement = connection.prepareStatement("insert into javaTestDB.test_table values (default,?)");
+//			preparedStatement.setString(1,"insert test from java");
+//			preparedStatement.executeUpdate();
 		}finally{
 			close();
 		}
