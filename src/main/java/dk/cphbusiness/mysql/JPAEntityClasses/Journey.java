@@ -28,19 +28,19 @@ public class Journey implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//    
-//    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
-//    @OneToOne()
-//    private Location departureLocation;
+    
+    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
+    @ManyToOne()
+    private Location departureLocation;
     
     @JoinColumn(name = "destinationLocationId", referencedColumnName = "locationId")
     @ManyToOne()
     private Location destinationLocation;
 
     public Journey(Location departureLocation, Location destinationLocation) {
-//        this.departureLocation = departureLocation;
+        this.departureLocation = departureLocation;
         this.destinationLocation = destinationLocation;
     }
     
