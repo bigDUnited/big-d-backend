@@ -18,7 +18,6 @@ public class EntityMigrator {
         Location loc = new Location();
         EntityMigrator em = new EntityMigrator();
         em.persist(loc);
-        
         System.exit(0);
     }
 

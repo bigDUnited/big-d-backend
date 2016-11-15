@@ -21,20 +21,20 @@ public class Location implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long locationId;
 
     public Long getId() {
-        return id;
+        return locationId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.locationId = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (locationId != null ? locationId.hashCode() : 0);
         return hash;
     }
 
@@ -45,7 +45,7 @@ public class Location implements Serializable {
             return false;
         }
         Location other = (Location) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.locationId == null && other.locationId != null) || (this.locationId != null && !this.locationId.equals(other.locationId))) {
             return false;
         }
         return true;
@@ -53,7 +53,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Location[ id=" + id + " ]";
+        return "dk.cphbusiness.mysql.JPAEntityClasses.Location[ id=" + locationId + " ]";
     }
     
 }
