@@ -39,7 +39,7 @@ public class Journey implements Serializable {
     @ManyToOne()
     private Location destinationLocation;
     
-    private Ferry
+  
 
     public Journey(Location departureLocation, Location destinationLocation) {
         this.departureLocation = departureLocation;
