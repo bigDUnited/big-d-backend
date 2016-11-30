@@ -6,6 +6,7 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,11 +40,21 @@ public class Journey implements Serializable {
     @ManyToOne()
     private Location destinationLocation;
     
-  
+    @JoinColumn(name = "ferryName", referencedColumnName = "ferryName")
+    @ManyToOne()
+    private Ferry ferry;
+    
+    @NotNull
+    private Date date;
 
-    public Journey(Location departureLocation, Location destinationLocation) {
+    public Journey() {
+    }
+
+    public Journey(Location departureLocation, Location destinationLocation, Ferry ferry,Date date) {
         this.departureLocation = departureLocation;
         this.destinationLocation = destinationLocation;
+        this.ferry = ferry;
+        this.date = date;
     }
     
     public Integer getId() {
@@ -54,6 +65,32 @@ public class Journey implements Serializable {
         this.id = id;
     }
 
+    public Location getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public void setDepartureLocation(Location departureLocation) {
+        this.departureLocation = departureLocation;
+    }
+
+    public Location getDestinationLocation() {
+        return destinationLocation;
+    }
+
+    public void setDestinationLocation(Location destinationLocation) {
+        this.destinationLocation = destinationLocation;
+    }
+
+    public Ferry getFerry() {
+        return ferry;
+    }
+
+    public void setFerry(Ferry ferry) {
+        this.ferry = ferry;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

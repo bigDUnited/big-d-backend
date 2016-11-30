@@ -6,12 +6,15 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,7 +25,7 @@ import javax.validation.constraints.Size;
 @Table(name = "Route")
 public class Route implements Serializable {
 
-    public Route(String distance, String duration, Schedule schedule) {
+    public Route(String distance, String duration, List<Schedule> schedule) {
         this.distance = distance;
         this.duration = duration;
         this.schedule = schedule;
@@ -44,9 +47,13 @@ public class Route implements Serializable {
     @Column(name="duration")
     private String  duration;
     
-    @JoinColumn(name = "routeSchedule", referencedColumnName = "scheduleId")
     @OneToMany()
-    private Schedule schedule;
+    @JoinTable(
+            name = "Route_Schedule",
+            joinColumns = {@JoinColumn(name = "routeId",referencedColumnName = "routeId")},
+            inverseJoinColumns = {@JoinColumn(name = "scheduleId",referencedColumnName = "scheduleId")}
+    )
+    private List<Schedule> schedule;
 
 
     public Integer getRouteId() {

@@ -6,12 +6,22 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -26,10 +36,23 @@ public class Schedule implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer scheduleId;
     
-   // private  startHour;
-   // private  dayOfWeek;
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name="dayOfWeek")
+    private String dayOfWeek;
     
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name="startHour")
+    private Date startHour;
     
+    public Schedule() {
+    }
+
+    public Schedule(String dayOfWeek, Date startHour) {
+        this.dayOfWeek = dayOfWeek;
+        this.startHour = startHour;
+    }
 
     public Integer getScheduleId() {
         return scheduleId;
