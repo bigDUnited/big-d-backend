@@ -3,6 +3,8 @@
   <persistence-unit name="bigDPersistence" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>dk.cphbusiness.mysql.JPAEntityClasses.Location</class>
+    <class>dk.cphbusiness.mysql.JPAEntityClasses.Journey</class>
+    <class>dk.cphbusiness.mysql.JPAEntityClasses.Route</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://138.68.86.0:3306/ferryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
