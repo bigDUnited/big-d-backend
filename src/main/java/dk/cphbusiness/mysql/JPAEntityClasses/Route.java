@@ -6,35 +6,68 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-/**
- *
- * @author raul
- */
+
 @Entity
+@Table(name = "Route")
 public class Route implements Serializable {
 
+    public Route(String distance, String duration, List<Schedule> schedule) {
+        this.distance = distance;
+        this.duration = duration;
+        this.schedule = schedule;
+    }
+    
+          
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer routeId;
+    
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name="distance")
+    private String  distance;
+    
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name="duration")
+    private String  duration;
+    
+    @OneToMany()
+    @JoinTable(
+            name = "Route_Schedule",
+            joinColumns = {@JoinColumn(name = "routeId",referencedColumnName = "routeId")},
+            inverseJoinColumns = {@JoinColumn(name = "scheduleId",referencedColumnName = "scheduleId")}
+    )
+    private List<Schedule> schedule;
 
-    public Integer getId() {
-        return id;
+
+    public Integer getRouteId() {
+        return routeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setrouteId(Integer routeId) {
+        this.routeId = routeId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (routeId != null ? routeId.hashCode() : 0);
         return hash;
     }
 
@@ -45,7 +78,7 @@ public class Route implements Serializable {
             return false;
         }
         Route other = (Route) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.routeId == null && other.routeId != null) || (this.routeId != null && !this.routeId.equals(other.routeId))) {
             return false;
         }
         return true;
@@ -53,7 +86,7 @@ public class Route implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Route[ id=" + id + " ]";
+        return "dk.cphbusiness.mysql.JPAEntityClasses.Route[ id=" + routeId + " ]";
     }
     
 }
