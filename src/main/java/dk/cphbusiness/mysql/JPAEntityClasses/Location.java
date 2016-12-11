@@ -19,10 +19,14 @@ import javax.validation.constraints.Size;
  *
  * @author redrose
  */
-@Entity
+@Entity(name="Locations")
 @Table(name="Locations")
+
 public class Location implements Serializable {
 
+    public Location(){
+    }
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,7 +9,12 @@ import dtos.JourneysDTO;
 import dtos.LocationDTO;
 import dtos.ReservationSummaryDTO;
 import dtos.RouteDTO;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,12 +24,44 @@ public class ContractController implements contractinterface.ContractInterface  
 
     @Override
     public List<LocationDTO> getLocations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<LocationDTO> list = new ArrayList();
+        EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("bigDPersistence");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+        Query query = em.createQuery("SELECT l FROM Locations l");
+        list = query.getResultList();
+        System.out.println("number of locations in the db " + list.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            System.exit(0);
+        } finally {
+            em.getTransaction().commit();
+            em.close();
+        }
+      return list;
     }
 
     @Override
     public List<RouteDTO> getRoutes(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<RouteDTO> list = new ArrayList();
+        EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("bigDPersistence");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+        Query query = em.createQuery("SELECT r FROM Route r WHERE r.routeId =" + i);
+        list = query.getResultList();
+        System.out.println("Route " + list.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            System.exit(0);
+        } finally {
+            em.getTransaction().commit();
+            em.close();
+        }
+      return list;
     }
 
     @Override

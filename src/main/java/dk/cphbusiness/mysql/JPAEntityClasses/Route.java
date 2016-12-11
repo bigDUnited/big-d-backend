@@ -21,9 +21,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-@Entity
+@Entity("name Route")
 @Table(name = "Route")
 public class Route implements Serializable {
+    
+    public Route(){
+        
+    }
 
     public Route(String distance, String duration, List<Schedule> schedule) {
         this.distance = distance;
