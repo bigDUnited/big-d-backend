@@ -1,4 +1,3 @@
-
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
@@ -17,41 +16,50 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "Route")
 public class Route implements Serializable {
 
-    public Route(String distance, String duration, List<Schedule> schedule) {
+    public Route(Location departureLocation, Location destinationLocation, String distance, String duration, List<Schedule> schedule) {
+        this.departureLocation = departureLocation;
+        this.destinationLocation = destinationLocation;
         this.distance = distance;
         this.duration = duration;
         this.schedule = schedule;
     }
-    
-          
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer routeId;
-    
+
     @NotNull
     @Size(min = 2, max = 20)
-    @Column(name="distance")
-    private String  distance;
-    
+    @Column(name = "distance")
+    private String distance;
+
     @NotNull
     @Size(min = 2, max = 20)
-    @Column(name="duration")
-    private String  duration;
-        
+    @Column(name = "duration")
+    private String duration;
+
+    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
+    @ManyToOne()
+    private Location departureLocation;
+
+    @JoinColumn(name = "destinationLocationId", referencedColumnName = "locationId")
+    @ManyToOne()
+    private Location destinationLocation;
+
     @OneToMany()
     @JoinTable(
             name = "Route_Schedule",
-            joinColumns = {@JoinColumn(name = "routeId",referencedColumnName = "routeId")},
-            inverseJoinColumns = {@JoinColumn(name = "scheduleId",referencedColumnName = "scheduleId")}
+            joinColumns = {
+                @JoinColumn(name = "routeId", referencedColumnName = "routeId")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "scheduleId", referencedColumnName = "scheduleId")}
     )
     private List<Schedule> schedule;
-
 
     public Integer getRouteId() {
         return routeId;
@@ -59,6 +67,22 @@ public class Route implements Serializable {
 
     public void setrouteId(Integer routeId) {
         this.routeId = routeId;
+    }
+
+    public Location getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public void setDepartureLocation(Location departureLocation) {
+        this.departureLocation = departureLocation;
+    }
+
+    public Location getDestinationLocation() {
+        return destinationLocation;
+    }
+
+    public void setDestinationLocation(Location destinationLocation) {
+        this.destinationLocation = destinationLocation;
     }
 
     @Override
@@ -85,5 +109,5 @@ public class Route implements Serializable {
     public String toString() {
         return "dk.cphbusiness.mysql.JPAEntityClasses.Route[ id=" + routeId + " ]";
     }
-    
+
 }

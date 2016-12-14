@@ -50,7 +50,10 @@ public class ContractController implements contractinterface.ContractInterface  
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
-        Query query = em.createQuery("SELECT r FROM Route r WHERE r.routeId =" + i);
+        Query query = em.createNativeQuery("select Route.routeId,\n" +
+        "(select Locations.locationName from Route inner join Locations on Locations.locationId = Route.departureLocationId where Route.destinationLocationId = "+i+"),\n" +
+        "(select Locations.locationName from Route inner join Locations on Locations.locationId = Route.departureLocationId where Route.destinationLocationId !="+i+")\n" +
+        "from Route LIMIT 1");
         list = query.getResultList();
         System.out.println("Route " + list.toString());
         } catch (Exception e) {

@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,11 +28,10 @@ import javax.validation.constraints.Size;
 @Table(name="Locations")
 
 public class Location implements Serializable {
-    
-    public Location(String locationName, List<Route> route) {
+    public Location(String locationName) {
         this.locationName = locationName;
-        this.route = route;
     }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,10 +41,6 @@ public class Location implements Serializable {
     @Size(min = 2, max = 20)
     @Column(name="locationName")
     private String locationName;
-    
-    @OneToMany()
-    @JoinColumn(name = "routeId", referencedColumnName = "routeId")
-    private List<Route> route;
     
     public String getLocationName() {
         return locationName;

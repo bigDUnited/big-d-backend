@@ -27,62 +27,91 @@ import jdk.nashorn.internal.objects.NativeArray;
 public class EntityMigrator {
 
     public static void main(String[] args) throws ParseException { 
-                System.out.println("1");
-
-        EntityMigrator em = new EntityMigrator();
-        DateFormat time = new SimpleDateFormat("HH:mm:ss");
-        Date date1 = time.parse("20:00:00");
-        ArrayList<Object> mylist = new ArrayList<Object>(); 
-        Schedule schedule1 = new Schedule("monday",date1);
-        Schedule schedule2 = new Schedule("tuesday",date1);
-        List listOfSchedules = new ArrayList();
-        List listOfRoutes = new ArrayList();
         
-                System.out.println("2" + listOfRoutes.size());
+          EntityMigrator em = new EntityMigrator();
+//        ArrayList<Object> mylist = new ArrayList<Object>();
+//        DateFormat time = new SimpleDateFormat("HH:mm:ss");
+//        Date date1 = time.parse("20:00:00");
+//        Date date2 = time.parse("10:00:00");
+//
+//        Schedule schedule1 = new Schedule("monday", date1);
+//        Schedule schedule2 = new Schedule("monday", date2);
+//        Schedule schedule3 = new Schedule("tuesday", date1);
+//        Schedule schedule4 = new Schedule("tuesday", date2);
+//        Schedule schedule5 = new Schedule("wednsday", date1);
+//        Schedule schedule6 = new Schedule("wednsday", date2);
+//        Schedule schedule7 = new Schedule("friday", date1);
+//        Schedule schedule8 = new Schedule("friday", date2);
+//        Schedule schedule9 = new Schedule("saturday", date1);
+//        Schedule schedule10 = new Schedule("saturday", date2);
+//        Schedule schedule11 = new Schedule("sunday", date1);
+//        Schedule schedule12 = new Schedule("sunday", date2);
+//        List listOfSchedules = new ArrayList();
+//        List listOfRoutes = new ArrayList();
+//        
+//        listOfSchedules.add(schedule1);
+//        listOfSchedules.add(schedule2);
+//        listOfSchedules.add(schedule3);
+//        listOfSchedules.add(schedule4);
+//        listOfSchedules.add(schedule5);
+//        listOfSchedules.add(schedule6);
+//        listOfSchedules.add(schedule7);
+//        listOfSchedules.add(schedule8);
+//        listOfSchedules.add(schedule9);
+//        listOfSchedules.add(schedule10);
+//        listOfSchedules.add(schedule11);
+//        listOfSchedules.add(schedule12);
+//
+//        Location firstLoc = new Location("Cph");
+//        Location secondLoc = new Location("Malmø");
+//        
+//        Route r1 = new Route(firstLoc, secondLoc, "100", "60", listOfSchedules);
+//        
+//        listOfRoutes.add(r1);
+//        
+//
+//
+//
+//        FerryType ferryType = new FerryType("Big Ferry", 10, 20, false, 0, 0);
+//
+//        Ferry ferry = new Ferry(ferryType, "The beautiful one");
+//
+//        Journey firstJourney = new Journey(ferry, new Date(12323), r1);
+//        
+//
+//        Vehicle car = new Vehicle("Car", 2);
+//
+//        Reservation res = new Reservation("Raul","S",1,car,firstJourney);
+//        
+//        mylist.add(schedule1);
+//        mylist.add(schedule2);
+//        mylist.add(schedule3);
+//        mylist.add(schedule4);
+//        mylist.add(schedule5);
+//        mylist.add(schedule6);
+//        mylist.add(schedule7);
+//        mylist.add(schedule8);
+//        mylist.add(schedule9);
+//        mylist.add(schedule10);
+//        mylist.add(schedule11);
+//        mylist.add(schedule12);
+//
+//        mylist.add(r1);
+//        mylist.add(firstJourney);
+//
+//        mylist.add(firstLoc);
+//        mylist.add(secondLoc);
+//        mylist.add(ferryType);
+//        mylist.add(ferry);
+//
+//        mylist.add(car);
+//        mylist.add(res);
+// 
+//
 
-
-        
-        listOfSchedules.add(schedule1);
-        listOfSchedules.add(schedule2);
-        
-        Route r1 = new Route("a lot", "More", listOfSchedules);  
-        System.out.println("ROUTE   #@#@#@  oject" + r1.getRouteId());
-        listOfRoutes.add(r1);
-        
-        mylist.add(r1);
-        
-        System.out.println("list of routes befoore object creation" + listOfRoutes.size());
-        Location firstLoc = new Location("Cph", listOfRoutes);
-        Location secondLoc = new Location("Malmø", listOfRoutes);
-        System.out.println("LOCATION   #@#@#@  oject" + firstLoc.getId());
-
-
-        mylist.add(firstLoc);
-        mylist.add(secondLoc);
-
-        FerryType ferryType = new FerryType("Big Ferry", 10, 20, false, 0, 0);
-        mylist.add(ferryType);
-        Ferry ferry = new Ferry(ferryType, "The beautiful one");
-        mylist.add(ferry);
-
-        Journey firstJourney = new Journey(firstLoc,secondLoc,ferry, new Date(12323), r1);
-        mylist.add(firstJourney);
-        Vehicle car = new Vehicle("Car", 2);
-        mylist.add(car);
-        
-        Reservation res = new Reservation("Raul","S",1,car,firstJourney);
-        mylist.add(res);
-        
-;
-        mylist.add(schedule1);
-        mylist.add(schedule2);
-
-
-
-       em.persist(mylist);
-//       ContractController c = new ContractController();
-////     c.getRoutes(1);
-//       c.getRoutes(1);
+//        em.persist(mylist);
+         ContractController c = new ContractController();
+         c.getRoutes(1);
 
     }
 

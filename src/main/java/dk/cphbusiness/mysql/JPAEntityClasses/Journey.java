@@ -31,15 +31,8 @@ public class Journey implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
-    @ManyToOne()
-    private Location departureLocation;
-    
-    @JoinColumn(name = "destinationLocationId", referencedColumnName = "locationId")
-    @ManyToOne()
-    private Location destinationLocation;
-    
+
+
     @JoinColumn(name = "ferryName", referencedColumnName = "ferryName")
     @ManyToOne()
     private Ferry ferry;
@@ -54,9 +47,7 @@ public class Journey implements Serializable {
     public Journey() {
     }
 
-    public Journey(Location departureLocation, Location destinationLocation, Ferry ferry,Date date, Route route) {
-        this.departureLocation = departureLocation;
-        this.destinationLocation = destinationLocation;
+    public Journey(Ferry ferry, Date date, Route route) {
         this.ferry = ferry;
         this.date = date;
         this.route = route;
@@ -68,22 +59,6 @@ public class Journey implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Location getDepartureLocation() {
-        return departureLocation;
-    }
-
-    public void setDepartureLocation(Location departureLocation) {
-        this.departureLocation = departureLocation;
-    }
-
-    public Location getDestinationLocation() {
-        return destinationLocation;
-    }
-
-    public void setDestinationLocation(Location destinationLocation) {
-        this.destinationLocation = destinationLocation;
     }
 
     public Ferry getFerry() {
