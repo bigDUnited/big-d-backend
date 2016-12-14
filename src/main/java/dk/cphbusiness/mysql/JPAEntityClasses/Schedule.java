@@ -28,7 +28,7 @@ import javax.validation.constraints.Size;
  * @author redrose
  */
 @Entity
-@Table(name = "Schedule")
+@Table(name = "ScheduleTable")
 public class Schedule implements Serializable {
 
     private static final long serialVersionUID = 1L;

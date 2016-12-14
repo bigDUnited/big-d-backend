@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
@@ -15,46 +10,59 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "Route")
 public class Route implements Serializable {
 
-    public Route(String distance, String duration, List<Schedule> schedule) {
+    public Route() {
+    }
+
+    public Route(Location departureLocation, Location destinationLocation, String distance, String duration, List<Schedule> schedule) {
+        this.departureLocation = departureLocation;
+        this.destinationLocation = destinationLocation;
         this.distance = distance;
         this.duration = duration;
         this.schedule = schedule;
     }
-    
-          
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer routeId;
-    
+
     @NotNull
     @Size(min = 2, max = 20)
-    @Column(name="distance")
-    private String  distance;
-    
+    @Column(name = "distance")
+    private String distance;
+
     @NotNull
     @Size(min = 2, max = 20)
-    @Column(name="duration")
-    private String  duration;
-    
+    @Column(name = "duration")
+    private String duration;
+
+    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
+    @ManyToOne()
+    private Location departureLocation;
+
+    @JoinColumn(name = "destinationLocationId", referencedColumnName = "locationId")
+    @ManyToOne()
+    private Location destinationLocation;
+
     @OneToMany()
     @JoinTable(
             name = "Route_Schedule",
-            joinColumns = {@JoinColumn(name = "routeId",referencedColumnName = "routeId")},
-            inverseJoinColumns = {@JoinColumn(name = "scheduleId",referencedColumnName = "scheduleId")}
+            joinColumns = {
+                @JoinColumn(name = "routeId", referencedColumnName = "routeId")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "scheduleId", referencedColumnName = "scheduleId")}
     )
     private List<Schedule> schedule;
-
 
     public Integer getRouteId() {
         return routeId;
@@ -62,6 +70,46 @@ public class Route implements Serializable {
 
     public void setrouteId(Integer routeId) {
         this.routeId = routeId;
+    }
+
+    public Location getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public void setDepartureLocation(Location departureLocation) {
+        this.departureLocation = departureLocation;
+    }
+
+    public Location getDestinationLocation() {
+        return destinationLocation;
+    }
+
+    public void setDestinationLocation(Location destinationLocation) {
+        this.destinationLocation = destinationLocation;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public List<Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<Schedule> schedule) {
+        this.schedule = schedule;
     }
 
     @Override
@@ -86,7 +134,7 @@ public class Route implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Route[ id=" + routeId + " ]";
+        return "Route id" + routeId + " Departure location : "+departureLocation.getLocationName();
     }
-    
+
 }

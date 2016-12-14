@@ -6,11 +6,16 @@
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,9 +24,16 @@ import javax.validation.constraints.Size;
  *
  * @author redrose
  */
-@Entity
+@Entity(name="Locations")
 @Table(name="Locations")
+
 public class Location implements Serializable {
+
+    public Location() {
+    }
+    public Location(String locationName) {
+        this.locationName = locationName;
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,11 +44,7 @@ public class Location implements Serializable {
     @Size(min = 2, max = 20)
     @Column(name="locationName")
     private String locationName;
-
-    public Location(String locationName) {
-        this.locationName = locationName;
-    }
-
+    
     public String getLocationName() {
         return locationName;
     }

@@ -31,18 +31,15 @@ public class Journey implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @JoinColumn(name = "departureLocationId", referencedColumnName = "locationId")
-    @ManyToOne()
-    private Location departureLocation;
-    
-    @JoinColumn(name = "destinationLocationId", referencedColumnName = "locationId")
-    @ManyToOne()
-    private Location destinationLocation;
-    
+
+
     @JoinColumn(name = "ferryName", referencedColumnName = "ferryName")
     @ManyToOne()
     private Ferry ferry;
+    
+    @JoinColumn(name = "routeId", referencedColumnName = "routeId")
+    @ManyToOne()
+    private Route route;
     
     @NotNull
     private Date date;
@@ -50,11 +47,10 @@ public class Journey implements Serializable {
     public Journey() {
     }
 
-    public Journey(Location departureLocation, Location destinationLocation, Ferry ferry,Date date) {
-        this.departureLocation = departureLocation;
-        this.destinationLocation = destinationLocation;
+    public Journey(Ferry ferry, Date date, Route route) {
         this.ferry = ferry;
         this.date = date;
+        this.route = route;
     }
     
     public Integer getId() {
@@ -65,22 +61,6 @@ public class Journey implements Serializable {
         this.id = id;
     }
 
-    public Location getDepartureLocation() {
-        return departureLocation;
-    }
-
-    public void setDepartureLocation(Location departureLocation) {
-        this.departureLocation = departureLocation;
-    }
-
-    public Location getDestinationLocation() {
-        return destinationLocation;
-    }
-
-    public void setDestinationLocation(Location destinationLocation) {
-        this.destinationLocation = destinationLocation;
-    }
-
     public Ferry getFerry() {
         return ferry;
     }
@@ -89,7 +69,21 @@ public class Journey implements Serializable {
         this.ferry = ferry;
     }
 
-    
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
     @Override
     public int hashCode() {
@@ -113,7 +107,8 @@ public class Journey implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Journey[ id=" + id + " ]";
+        return " id " + id + " departure: "+ route.getDepartureLocation().getLocationName() + " destination: " + route.getDestinationLocation().getLocationName() + 
+                " ferry name: "+ ferry.getName();
     }
     
 }
