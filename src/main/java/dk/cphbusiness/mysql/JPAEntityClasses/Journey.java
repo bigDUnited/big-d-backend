@@ -44,17 +44,22 @@ public class Journey implements Serializable {
     @ManyToOne()
     private Ferry ferry;
     
+    @JoinColumn(name = "routeId", referencedColumnName = "routeId")
+    @ManyToOne()
+    private Route route;
+    
     @NotNull
     private Date date;
 
     public Journey() {
     }
 
-    public Journey(Location departureLocation, Location destinationLocation, Ferry ferry,Date date) {
+    public Journey(Location departureLocation, Location destinationLocation, Ferry ferry,Date date, Route route) {
         this.departureLocation = departureLocation;
         this.destinationLocation = destinationLocation;
         this.ferry = ferry;
         this.date = date;
+        this.route = route;
     }
     
     public Integer getId() {

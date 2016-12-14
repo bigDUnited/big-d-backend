@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
 import java.io.Serializable;
@@ -15,19 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-@Entity("name Route")
+@Entity
 @Table(name = "Route")
 public class Route implements Serializable {
-    
-    public Route(){
-        
-    }
 
     public Route(String distance, String duration, List<Schedule> schedule) {
         this.distance = distance;
@@ -50,7 +43,7 @@ public class Route implements Serializable {
     @Size(min = 2, max = 20)
     @Column(name="duration")
     private String  duration;
-    
+        
     @OneToMany()
     @JoinTable(
             name = "Route_Schedule",
