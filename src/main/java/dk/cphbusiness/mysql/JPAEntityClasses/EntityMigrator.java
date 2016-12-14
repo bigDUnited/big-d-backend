@@ -6,6 +6,7 @@
  */
 package dk.cphbusiness.mysql.JPAEntityClasses;
 
+import dtos.JourneysDTO;
 import dtos.LocationDTO;
 import java.sql.Array;
 import java.text.DateFormat;
@@ -13,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -110,8 +112,21 @@ public class EntityMigrator {
 //
 
 //        em.persist(mylist);
-         ContractController c = new ContractController();
-         c.getRoutes(1);
+        List as = new ArrayList();
+        List locations = new ArrayList();
+        JourneysDTO journey;
+        
+        ContractController c = new ContractController();
+         locations = c.getLocations();
+         as = c.getRoutes(1);
+         journey = c.getJourney(1);
+         
+         System.out.println(c.makeReservation(1, 1, "Car"));
+         
+         System.out.println("Locations: "+ locations.toString());
+         System.out.println("routes " + as.toString());
+         System.out.println("Journeys: "+ journey.toString());
+             
 
     }
 

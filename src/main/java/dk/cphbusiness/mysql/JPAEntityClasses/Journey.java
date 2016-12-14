@@ -69,7 +69,21 @@ public class Journey implements Serializable {
         this.ferry = ferry;
     }
 
-    
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
     @Override
     public int hashCode() {
@@ -93,7 +107,8 @@ public class Journey implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Journey[ id=" + id + " ]";
+        return " id " + id + " departure: "+ route.getDepartureLocation().getLocationName() + " destination: " + route.getDestinationLocation().getLocationName() + 
+                " ferry name: "+ ferry.getName();
     }
     
 }

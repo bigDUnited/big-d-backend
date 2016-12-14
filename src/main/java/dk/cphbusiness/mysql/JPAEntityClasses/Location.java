@@ -28,6 +28,9 @@ import javax.validation.constraints.Size;
 @Table(name="Locations")
 
 public class Location implements Serializable {
+
+    public Location() {
+    }
     public Location(String locationName) {
         this.locationName = locationName;
     }

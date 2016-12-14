@@ -30,20 +30,39 @@ public class Vehicle implements Serializable {
 
     @NotNull
     private String name;
-    
+
     private int capacity;
+
+    public Vehicle() {
+    }
 
     public Vehicle(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
     }
-    
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     @Override
@@ -68,7 +87,7 @@ public class Vehicle implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Vehicle[ id=" + id + " ]";
+        return "id :" + id + " name: " + name + " capacity: " + capacity;
     }
-    
+
 }

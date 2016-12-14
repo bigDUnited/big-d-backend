@@ -20,6 +20,9 @@ import javax.validation.constraints.Size;
 @Table(name = "Route")
 public class Route implements Serializable {
 
+    public Route() {
+    }
+
     public Route(Location departureLocation, Location destinationLocation, String distance, String duration, List<Schedule> schedule) {
         this.departureLocation = departureLocation;
         this.destinationLocation = destinationLocation;
@@ -85,6 +88,30 @@ public class Route implements Serializable {
         this.destinationLocation = destinationLocation;
     }
 
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public List<Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<Schedule> schedule) {
+        this.schedule = schedule;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -107,7 +134,7 @@ public class Route implements Serializable {
 
     @Override
     public String toString() {
-        return "dk.cphbusiness.mysql.JPAEntityClasses.Route[ id=" + routeId + " ]";
+        return "Route id" + routeId + " Departure location : "+departureLocation.getLocationName();
     }
 
 }

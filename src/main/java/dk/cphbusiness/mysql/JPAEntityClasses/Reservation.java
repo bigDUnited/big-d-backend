@@ -30,14 +30,14 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    @NotNull
-    @Size(min = 2, max = 80)
-    private String firstName;
-
-    @NotNull
-    @Size(min = 2, max = 80)
-    private String lastName;
-    
+//    @NotNull
+//    @Size(min = 2, max = 80)
+//    private String firstName;
+//
+//    @NotNull
+//    @Size(min = 2, max = 80)
+//    private String lastName;
+//    
     @NotNull
     private int numOfPeople;
     
@@ -51,11 +51,38 @@ public class Reservation implements Serializable {
     @ManyToOne()
     private Journey journey;
 
-    public Reservation(String firstName, String lastName, int numOfPeople, Vehicle vehicle, Journey journey) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Reservation() {
+    }
+
+    public Reservation(int numOfPeople, Vehicle vehicle, Journey journey) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
         this.numOfPeople = numOfPeople;
         this.vehicle = vehicle;
+        this.journey = journey;
+    }
+
+    public int getNumOfPeople() {
+        return numOfPeople;
+    }
+
+    public void setNumOfPeople(int numOfPeople) {
+        this.numOfPeople = numOfPeople;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Journey getJourney() {
+        return journey;
+    }
+
+    public void setJourney(Journey journey) {
         this.journey = journey;
     }
     
