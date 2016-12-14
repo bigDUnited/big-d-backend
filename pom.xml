@@ -3,7 +3,7 @@
     
     <groupId>big-d</groupId>
     <artifactId>backend</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>jar</packaging>
     <!-- WAR chancged to JAR -->
 
