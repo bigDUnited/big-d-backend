@@ -40,7 +40,9 @@ public interface ContractInterface {
 ### Explains the setup
 
 Jenkins url: [http://138.68.86.0:8081/](http://138.68.86.0:8081/)
-Artifactory url: [http://138.68.86.0:8082/artifactory](http://138.68.86.0:8082/artifactory) 
+
+Artifactory url: [http://138.68.86.0:8082/artifactory](http://138.68.86.0:8082/artifactory)
+
 
 ![CI/CD chain](/images/CI.png)
 The diagram above shows our deployment scenario.
