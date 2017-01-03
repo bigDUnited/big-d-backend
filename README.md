@@ -45,6 +45,7 @@ Artifactory url: [http://138.68.86.0:8082/artifactory](http://138.68.86.0:8082/a
 
 
 ![CI/CD chain](/images/CI.png)
+
 The diagram above shows our deployment scenario.
 
 ### Instruction on setting up Jenkins
