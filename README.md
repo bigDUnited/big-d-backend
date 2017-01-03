@@ -12,6 +12,23 @@ Contract Based Development - JPA Backend
 
 ### The final toolbox report
 
+```java
+public interface ContractInterface {
+
+    public List<LocationDTO> getLocations();
+
+    public List<RouteDTO> getRoutes(int locationId);
+
+    public JourneysDTO getJourney(int routeId);
+
+    public ReservationSummaryDTO makeReservation(int journeyId, int numOfPeople, String vehicleType);
+    
+    public ReservationSummaryDTO getReservation(int reservationId);
+    
+    public List<ReservationSummaryDTO> getAllReservations();
+}
+```
+
 ### Explains the setup
 
 ### Instruction on setting up Jenkins
