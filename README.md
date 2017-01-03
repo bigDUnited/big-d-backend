@@ -1,4 +1,13 @@
-# big-d-backend
+# Big-d-BackEnd
 Contract Based Development - JPA Backend
 
-Create your doc via github pages. Click [here](https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3)
+## Report Requirements
+
+- [x] Includes the final toolbox report made on the contract
+- [x] Explains the setup including urls for the repositories
+- [x] Includes a short instruction on setting up Jenkins in your particular setup
+- [x] Implements one or two use cases, as a proof of concept for the setup
+- [x] Implements tests for the implemented use cases. The coverage does not have to be 100% for the tests
+- [x] Include UML and code in the report, where it is relevant
+
+
