@@ -16,7 +16,8 @@ No web hooks?
 
 ### The final toolbox report
 
-[The link to code contract and toolbox](https://github.com/bigDUnited/big-d-contract)  
+[The link to code contract](https://github.com/bigDUnited/big-d-contract)  
+[The link to final version of toolbox](https://github.com/bigDUnited/big-d-midterm-enterprise) 
 
 ##### Methods from the contract 
 
