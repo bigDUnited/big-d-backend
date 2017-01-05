@@ -56,6 +56,7 @@ The diagram above shows our deployment scenario.
 ![3](/images/3.png)
 
 ### Use cases, as a proof of concept
+```
 Use Case: 	Create a Reservation
 Primary Actor: 	Customer
 Scope: 		Reservation page and reservation detail page.
@@ -101,6 +102,7 @@ Basic flow:
 		The customer presses the "Delete" button.
 		The customer confirms the deletion of the reservation.
 		The customer receives a confirmation from the system.
+```
 
 ### Tests for the implemented use cases
 
