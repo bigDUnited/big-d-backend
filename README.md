@@ -101,9 +101,6 @@ Basic flow:
 		The customer presses the "Delete" button.
 		The customer confirms the deletion of the reservation.
 		The customer receives a confirmation from the system.
-		
-
-###
 
 ### Tests for the implemented use cases
 
